@@ -1,7 +1,8 @@
 function wrapGifts(gifts) {
     if (gifts.length === 0) return []
-    gifts = gifts.map(e => `*${e}*`)  
-    return ['*'.repeat(gifts[0].length), ...gifts, '*'.repeat(gifts[0].length)]
+    gifts = gifts.map(e => `*${e}*`)
+    const cover = '*'.repeat(gifts[0].length)  
+    return [cover, ...gifts, cover]
 }
 
 console.log(wrapGifts(["📷", "⚽️"]))

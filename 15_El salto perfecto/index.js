@@ -1,8 +1,6 @@
 function checkSledJump(heights) {
   for (let i = 1, j = heights.length - 1; i < heights.length/2; i++, j--) {
-    if(heights[i - 1] >= heights[i] || heights[j - 1] <= heights[j]) {
-      return false
-    }
+    if(heights[i - 1] >= heights[i] || heights[j - 1] <= heights[j]) return false
   }
   return true
 }

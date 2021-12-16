@@ -2,8 +2,7 @@ function decodeNumbers(symbols) {
     const dict = { '.': 1, ',': 5, ':': 10, ';': 50, '!': 100 }
 
     return symbols.split('').reduce((t, c, i, arr) => {
-        if (dict[arr[i]] < dict[arr[i + 1]]) return t - dict[c]
-        return t + dict[c]
+        return dict[c] < dict[arr[i + 1]] ? t - dict[c] : t + dict[c]
     }, 0)
 }
 

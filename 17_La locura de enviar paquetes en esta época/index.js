@@ -1,5 +1,5 @@
 function countPackages(carriers, carrierID) {
-    const [, maxItems, team ] = carriers.find(carrier => carrier[0] === carrierID);
+    const [, maxItems, team ] = carriers.find(([ id ]) => id === carrierID);
   
     return team.reduce((t, c) => t + countPackages(carriers, c), 0) + maxItems
 }

@@ -4,6 +4,24 @@ function canCarry(capacity, trip) {
     }
     return true
 }
+
+function canCarry2(capacity, trip) {
+    for (let i = 0; i < trip.length; i++) {
+      const [ carry, collection, delivery ] = trip[i]
+      const [ nextCarry, nextCollection, nextDelivery ] = trip[i+1] || [0,0,0]
+      if (carry + nextCarry > capacity && delivery > nextCollection) return false
+    }
+    return true
+}
+
+function canCarry3(capacity, trip) {
+    return trip.reduce((t, c, i) => {
+      const [ carry, collection, delivery] = c
+      const [ nextCarry, nextCollection, nextDelivery ] = trip[i+1] || [0,0,0]
+      if (carry + nextCarry > capacity && delivery > nextCollection) t = false
+      return t
+    }, true)
+}
   
 console.log(canCarry(4, [[2, 5, 8], [3, 6, 10]])) // false
 // En el punto 5 recoge 2 regalos...

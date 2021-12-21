@@ -3,8 +3,7 @@ function pangram(letter) {
   return new Set(letter
     .toLowerCase()
     .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '')
-    .replace(/[^\w]/g, '')).size + include === 27
+    .replace(/\p{Diacritic}|[^\w]/gu, '')).size + include === 27
 }
 
 console.log(pangram('Extraño pan de col y kiwi se quemó bajo fugaz vahò')) // true

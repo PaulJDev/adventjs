@@ -16,7 +16,7 @@ function canCarry2(capacity, trip) {
 
 function canCarry3(capacity, trip) {
     return trip.reduce((t, c, i) => {
-      const [ carry, collection, delivery] = c
+      const [ carry, collection, delivery ] = c
       const [ nextCarry, nextCollection, nextDelivery ] = trip[i+1] || [0,0,0]
       if (carry + nextCarry > capacity && delivery > nextCollection) t = false
       return t

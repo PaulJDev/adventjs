@@ -5,7 +5,7 @@ function countDecorations(bigTree) {
 function countDecorations2(bigTree) {
     return Object.values(bigTree)
                   .filter(Boolean)
-                  .reduce((a, c) => a + countDecorations(c))
+                  .reduce((a, c) => a + countDecorations2(c))
 }
 
 const tree = {

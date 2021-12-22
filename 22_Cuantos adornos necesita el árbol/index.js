@@ -2,6 +2,12 @@ function countDecorations(bigTree) {
     return Object.values(bigTree).reduce((a, c) => typeof c === 'object' && c ? a + countDecorations(c) : a + c, 0)
 }
 
+function countDecorations2(bigTree) {
+    return Object.values(bigTree)
+                  .filter(Boolean)
+                  .reduce((a, c) => a + countDecorations(c))
+}
+
 const tree = {
     value: 1, // el nodo raíz siempre es uno, porque es la estrella ⭐
     left: {

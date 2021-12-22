@@ -13,6 +13,7 @@ function learn(time, courses) {
   })  
   return res ? res.slice(2) : null
 }
+
 console.log(learn(10, [2, 3, 8, 1, 4])) // [0, 2] -> con 10 horas disponibles lo mejor es que completemos los cursos en el índice 0 y 2.
 
 console.log(learn(15, [2, 10, 4, 1])) // [1, 2] -> Los cursos en [1, 2] son 14 horas, es la mejor opción.

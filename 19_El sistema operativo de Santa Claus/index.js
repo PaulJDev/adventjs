@@ -1,16 +1,17 @@
 function learn(time, courses) {
-    let res = []
-    for (let i = 0; i < courses.length - 1; i++) {
-      for(let j = i + 1; j < courses.length; j++) {
-        if(courses[i] + courses[j] <= time && courses[i] + courses[j] > (res[0] || 0) + (res[1] || 0)) {
-          res = [courses[i], courses[j]]
-        }
+  let res;
+  courses.forEach((course, i) => {
+    const courseWithoutCurrent = courses.filter((e, idx) => idx !== i)
+    courseWithoutCurrent.forEach((c, j) => {
+      const [storageCourse1, storageCourse2] = res || [0, 0]
+      const totalHours = course + c
+      const storageTotalHours = storageCourse1 + storageCourse2      
+      if (totalHours <= time && totalHours > storageTotalHours) {
+        res = [course, c, i, j+1]
       }
-    }
-    if(res.length === 0) return null
-    const index1 = courses.indexOf(res[0])
-    courses.splice(index1, 1, null)
-    return [index1, courses.indexOf(res[1])]
+    })
+  })  
+  return res ? res.slice(2) : null
 }
 
 console.log(learn(10, [2, 3, 8, 1, 4])) // [0, 2] -> con 10 horas disponibles lo mejor es que completemos los cursos en el índice 0 y 2.

@@ -8,6 +8,11 @@ function canReconfigure(from, to) {
 
     return Object.keys(crossData(from, to)).length === Object.keys(crossData(to, from)).length
 }
+
+function canReconfigure2(from, to) {
+  if (from.length !== to.length) return false
+  return new Set(from).size === new Set(to).size
+}
   
 let from = 'BAL'
 let to   = 'LIB'

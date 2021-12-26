@@ -1,17 +1,13 @@
 function canReconfigure(from, to) {
-    const crossData = (str1, str2) => {
-        return [...str1].reduce((a, c, i) => {
-            if (c !== str2[i]) a[c] = str2[i]
-            return a
-        }, {})
-    }
-
-    return Object.keys(crossData(from, to)).length === Object.keys(crossData(to, from)).length
-}
-
-function canReconfigure2(from, to) {
-  if (from.length !== to.length) return false
-  return new Set(from).size === new Set(to).size
+  if (from.length !== to.length) return false;  
+  const aux = {}
+  for (const [i, fromChar] of [...from].entries()) {
+    const toChar = to[i]
+    if (aux[toChar] && aux[toChar] !== fromChar) return false
+    if (aux[fromChar] && aux[fromChar] !== toChar) return false    
+    aux[toChar] = fromChar  
+  }  
+  return true  
 }
   
 let from = 'BAL'
